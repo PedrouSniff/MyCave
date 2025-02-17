@@ -1,0 +1,93 @@
+@use "../abstract/mixins";
+@use "../abstract/variable" as v;
+@use "../base/font";
+
+// CONTACT
+// FORMULAIRE
+#contact {
+    background-color: v.$bgcolor;
+    @include mixins.flex($direction:column);
+    
+    h2 {
+        font-family: "SourceBold";
+        font-size: 30px; 
+        margin-bottom: 2rem;
+        margin-top: 2rem;
+    }
+
+    .form {
+        @include mixins.flex($direction: column);
+        background-color: v.$primarycolor;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        padding-right: 7rem;
+        padding-left: 5rem;
+        margin-bottom: 2rem;
+        border-radius: 15px;
+
+        input {
+            border: none;
+            background-color: v.$bgcolor;
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            border: none;
+            background-color: v.$bgcolor;
+            width: 100%;
+            height: 100px;
+            padding: 15px;
+            margin-bottom: 10px;
+            resize: none;
+        }
+
+        label {
+            color: white;
+            display: flex;
+            flex-direction: column;
+            font-family: "SourceRegular";
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        
+        button {
+            background-color: v.$secondarycolor;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: all 400ms;
+
+            &:hover {
+                background-color: v.$accentcolor;
+            }
+        }
+    }
+
+    .reseaux {
+        margin-bottom: 2rem;
+
+        ul {
+            @include mixins.flex;
+            font-size: 50px;
+
+            li {
+                margin-left: 2rem;
+                margin-right: 2rem;
+
+                a {
+                    color: v.$primarycolor;
+                    display: block;
+                    transition: all 400ms;
+
+                    &:hover {
+                        scale: 1.2;
+                        color: v.$accentcolor;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Caves{% endblock %}
+
+{% block main %}
+
+    {# MAIN #}
+    <section id="caves">
+
+        {# Titre Caves #}
+        <div class="titre">
+            <h2>Caves</h2>
+        </div>
+
+        {# boutons #}
+        <div class="boutons">
+            {% if is_granted('ROLE_USER') and allCaves|filter(c => c.user == app.user)|length == 0 %}            
+                <a class="creaCave" href={{ path('app_cave_crea')}}>Créer Votre Cave</a>
+            {% endif %} 
+            {% for caves in allCaves %}
+                {% if caves.user == app.user %}
+                    <div>
+                        <a class="modifier" href="{{ path('app_cave_modif', {'id': caves.id}) }}">modifier</a>
+                        <form method="POST" onsubmit="return confirm('Confirmer la suppression ?')" action="{{ path('app_cave_supprimer', {'id': caves.id}) }}">
+                            <input type="hidden" name="_method" value="delete"> 
+                            <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ caves.id) }}">
+                            <input id="delete" type="submit" value="Supprimer">     
+                        </form>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>        
+        
+        {# Caves #}
+        <div class="cardscontainer">
+            {% for caves in allCaves %}
+                <a style="background-image: url({{ asset('images/' ~ caves.imageName) }})" class="cards" href={{ path('app_vins', {'id': caves.id }) }}>
+                    <div>
+                        <h3>{{caves.nom}}</h3>
+                        <p>Fondé le {{ caves.date|date("m/d/Y") }}</p>
+                        <p>{{caves.description|slice(0, 30) ~ '...'}}</p>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

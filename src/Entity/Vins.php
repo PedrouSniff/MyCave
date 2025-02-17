@@ -7,7 +7,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
+#[Vich\Uploadable]
 #[ORM\Entity(repositoryClass: VinsRepository::class)]
 class Vins
 {
@@ -25,6 +28,15 @@ class Vins
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date = null;
 
+    #[Vich\UploadableField(mapping: 'images', fileNameProperty: 'imageName')]
+    private ?File $imageFile = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?string $imageName = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $updatedAt = null;
+
     /**
      * @var Collection<int, CavesVins>
      */
@@ -38,7 +50,7 @@ class Vins
     private Collection $raisinsVins;
 
     #[ORM\ManyToOne(inversedBy: 'vins')]
-    private ?region $region = null;
+    private ?Region $region = null;
 
     public function __construct()
     {
@@ -147,15 +159,41 @@ class Vins
         return $this;
     }
 
-    public function getRegion(): ?region
+    public function getRegion(): ?Region
     {
         return $this->region;
     }
 
-    public function setRegion(?region $region): static
+    public function setRegion(?Region $region): static
     {
         $this->region = $region;
 
         return $this;
     }
+
+    public function setImageFile(?File $imageFile = null): void
+    {
+        $this->imageFile = $imageFile;
+
+        if ($imageFile) {
+            // Si un fichier est chargé, met à jour la date
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageName(?string $imageName): void
+    {
+        $this->imageName = $imageName;
+    }
+    
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
+    }
+
 }

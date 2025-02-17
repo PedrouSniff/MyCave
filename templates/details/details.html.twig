@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voir Plus{% endblock %}
+
+{% block main %}
+    <section id="details">
+        <div>
+            <img src="{{ asset('images/' ~ vins.imageName) }}" alt="">
+            <h3>{{vins.nom}}</h3>
+            <p>{{ vins.date|date("Y") }}</p>
+            <p>{{vins.description|slice(0, 30) ~ '...'}}</p>
+            <p>{{vins.region.pays.nom}} / {{vins.region.nom}} </p>
+        </div>
+    </section>
+{% endblock %}

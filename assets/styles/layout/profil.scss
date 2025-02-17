@@ -1,0 +1,38 @@
+@use "../abstract/mixins";
+@use "../abstract/variable" as v;
+@use "../base/font";
+
+#profil {
+    background-color: v.$bgcolor;
+    @include mixins.flex($direction:column);
+    color: white;
+
+    div {
+        @include mixins.flex($direction:column);
+        background-color: v.$primarycolor;
+        border-radius: 25px;
+        width: 25%;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+
+        p {
+            font-family: "SourceRegular";
+        }
+
+        h2 {
+            font-size: 25px;
+            margin-bottom: 1rem;
+            font-family: "SourceBold";
+        }
+    }
+
+    // img {
+    //     display: block;
+    //     margin: 0 auto 15px;
+    //     border-radius: 50%;
+    //     width: 100px;
+    //     height: 100px;
+    // }
+}

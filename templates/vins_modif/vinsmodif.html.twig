@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier votre vin{% endblock %}
+
+{% block main %}
+    <section id="modifVin">
+        <h2>Modifiez votre cave</h2>
+        <div class="form">  
+            {{form_start(modifVinsForm)}}
+                {{form_widget(modifVinsForm)}}
+                <button>Envoyer</button>
+            {{form_end(modifVinsForm)}}
+        </div>
+    </section>
+{% endblock %}

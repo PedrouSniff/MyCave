@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Votre Cave{% endblock %}
+
+{% block main %}
+    {# MAIN #}
+    <section id="modifCave">
+        <h2>Modifiez votre cave</h2>
+        <div class="form">  
+            {{form_start(modifCavesForm)}}
+                {{form_widget(modifCavesForm)}}
+                <button>Envoyer</button>
+            {{form_end(modifCavesForm)}} 
+        </div> 
+    </section>
+{% endblock %}

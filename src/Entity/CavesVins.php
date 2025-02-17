@@ -14,34 +14,34 @@ class CavesVins
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'cavesVins')]
-    private ?vins $vins = null;
+    private ?Vins $vins = null;
 
     #[ORM\ManyToOne(inversedBy: 'cavesVins')]
-    private ?caves $caves = null;
+    private ?Caves $caves = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getVins(): ?vins
+    public function getVins(): ?Vins
     {
         return $this->vins;
     }
 
-    public function setVins(?vins $vins): static
+    public function setVins(?Vins $vins): static
     {
         $this->vins = $vins;
 
         return $this;
     }
 
-    public function getCaves(): ?caves
+    public function getCaves(): ?Caves
     {
         return $this->caves;
     }
 
-    public function setCaves(?caves $caves): static
+    public function setCaves(?Caves $caves): static
     {
         $this->caves = $caves;
 

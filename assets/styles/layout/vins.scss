@@ -1,0 +1,141 @@
+@use "../abstract/mixins";
+@use "../abstract/variable" as v;
+@use "../base/font";
+
+#Vins {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: v.$bgcolor;
+
+    h2 {
+        font-family: "SourceBold";
+        font-size: 30px;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    p {
+        font-family: "SourceRegular";
+        margin-bottom: 15px;
+    }
+
+    .contact {
+        display: block;
+        font-family: "SourceRegular";
+        color: black;
+        text-decoration: underline;
+        transition: all 400ms;
+        margin-bottom: 1rem;
+
+        &:hover {
+            color: v.$accentcolor;
+            transform: scale(1.05);
+        }
+    }
+    
+    .form {
+        width: 30%;
+
+        form {
+            color: white;
+            background-color: v.$primarycolor;
+            @include mixins.flex($direction: column);
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            margin-top: 2rem;
+
+
+            button {
+                background-color: v.$secondarycolor;
+                border: none;
+                color: white;
+                cursor: pointer;
+                padding: 0.5rem;
+                transition: all 400ms;
+    
+                &:hover {
+                    background-color: v.$accentcolor;
+                }
+            }
+
+            #vins {
+                background-color: v.$primarycolor;
+                padding-left: 2rem;
+                padding-right: 3rem;
+                
+                div {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: start;
+
+                    label {
+                        font-family: "SourceRegular";
+                        margin-bottom: 5px;
+                    }
+
+                    input {
+                        width: 100%;
+                        margin-bottom: 10px;
+                        padding: 0.5rem;
+                    }
+
+                    textarea {
+                        width: 100%;
+                        resize: none;
+                        margin-bottom: 10px;
+                        padding: 0.5rem;
+                        height: 100px;
+                    }
+                    
+                    select {
+                        margin-bottom: 1rem;
+                    }
+                }
+            }
+        }
+    }
+    
+    .cards {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 20rem;
+        background-color: v.$primarycolor;
+        border-radius: 10px;
+        text-align: center;
+        border: solid v.$secondarycolor 4px;
+        transition: all 600ms;
+        margin-top: 2rem;
+
+        &:hover {
+            border: solid 4px v.$accentcolor;
+            scale: 1.05;
+        }
+
+        a {
+            color: white;
+            font-family: "SourceRegular";
+        }
+
+        p {
+            font-family: "SourceRegular";
+            margin-top: 10px;
+        }
+
+        h3 {
+            font-family: "SourceBold";
+            font-size: 20px;
+        }
+
+        img {
+            width: 100%;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+        }
+    }
+}

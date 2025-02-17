@@ -19,7 +19,7 @@ class Region
     private ?string $nom = null;
 
     #[ORM\ManyToOne(inversedBy: 'regions')]
-    private ?pays $pays = null;
+    private ?Pays $pays = null;
 
     /**
      * @var Collection<int, Vins>
@@ -49,12 +49,12 @@ class Region
         return $this;
     }
 
-    public function getPays(): ?pays
+    public function getPays(): ?Pays
     {
         return $this->pays;
     }
 
-    public function setPays(?pays $pays): static
+    public function setPays(?Pays $pays): static
     {
         $this->pays = $pays;
 
@@ -87,7 +87,6 @@ class Region
                 $vin->setRegion(null);
             }
         }
-
         return $this;
     }
 }

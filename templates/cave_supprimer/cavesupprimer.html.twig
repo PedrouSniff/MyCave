@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Suppresion{% endblock %}
+
+{% block main %}
+    <section>
+        <form method="POST" onsubmit="return confirm('Confirmer la suppression ?')" 
+            action="{{ path('app_cave_supprimer', {'id': caves.id}) }}">
+            <input type="hidden" name="_method" value="delete"> 
+            <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ caves.id) }}">
+            <input id="delete" type="submit" value="Supprimer">     
+        </form>
+    </section>
+{% endblock %}

@@ -14,34 +14,34 @@ class RaisinsVins
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'raisinsVins')]
-    private ?vins $vins = null;
+    private ?Vins $vins = null;
 
     #[ORM\ManyToOne(inversedBy: 'raisinsVins')]
-    private ?raisins $raisins = null;
+    private ?Raisins $raisins = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getVins(): ?vins
+    public function getVins(): ?Vins
     {
         return $this->vins;
     }
 
-    public function setVins(?vins $vins): static
+    public function setVins(?Vins $vins): static
     {
         $this->vins = $vins;
 
         return $this;
     }
 
-    public function getRaisins(): ?raisins
+    public function getRaisins(): ?Raisins
     {
         return $this->raisins;
     }
 
-    public function setRaisins(?raisins $raisins): static
+    public function setRaisins(?Raisins $raisins): static
     {
         $this->raisins = $raisins;
 

@@ -1,0 +1,94 @@
+@use "../abstract/mixins";
+@use "../abstract/variable" as v;
+@use "../base/font";
+
+// HEADER
+
+#header {
+    background-color: black;
+    @include mixins.flex($justify: space-between);
+    padding: 2rem;
+    font-family: "SourceBold";
+
+    a {
+        color: white;
+    }
+
+    .active {
+        color: #d090c2;
+    }
+
+
+    img {
+        width: 15rem;
+    }
+
+    .profil {
+        @include mixins.flex();
+
+        li {
+            a {
+                font-size: 15px;
+                margin-right: 1rem;
+                transition: all 600ms;
+                background-image: linear-gradient(to right, v.$accentcolor 0%, v.$accentcolor 100%);
+                background-size: 0% 3px; 
+                background-repeat: no-repeat;
+                background-position: center bottom;
+                
+                &:hover {
+                    background-size: 100% 3px; 
+                }
+            }
+        }
+
+        .fa-solid {
+            font-size: 25px;
+            background-color: white;
+            padding: 1rem;
+            border-radius: 100%;
+            color: black;
+            border: 3px solid black;
+            transition: all 600ms;
+
+            &:hover {
+                border: 3px solid  #d090c2;
+            }
+        }
+
+        .prof {
+            background-color: #d090c2;
+        }
+    }
+
+    nav {
+        background-color: v.$primarycolor;
+        font-size: 20px;
+        border-radius: 20px;
+        padding: 2rem;
+        padding-left: 10rem;
+        padding-right: 10rem;
+
+        ul {
+            @include mixins.flex();
+
+            li {
+                margin-left: 1rem;
+                margin-right: 1rem;
+
+                a {
+                    transition: all 600ms;
+                    background-image: linear-gradient(to right, v.$accentcolor 0%, v.$accentcolor 100%);
+                    background-size: 0% 3px; 
+                    background-repeat: no-repeat;
+                    background-position: center bottom;
+                    
+                    &:hover {
+                        background-size: 100% 3px; 
+                    }
+                }
+            }
+
+        }
+    }
+}

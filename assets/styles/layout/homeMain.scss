@@ -1,0 +1,67 @@
+@use "../abstract/mixins";
+@use "../abstract/variable" as v;
+@use "../base/font";
+
+// Intersection
+.intersection {
+    @include mixins.flex($direction: column);
+    text-align: center;
+
+    h2 {
+        margin-bottom: 2rem;
+        font-size: 30px;
+    }
+
+}
+
+// Présentation Caves
+#homeMain {
+    background-color: v.$bgcolor;
+    text-align: center;
+
+    p {
+        font-family: "SourceRegular";
+    }
+
+    h2 {
+        font-family: "SourceBold";
+        font-size: 30px;
+    }
+
+    h3 {
+        font-family: "SourceBold";
+    }  
+}
+
+#HomeCaves {
+    background: v.$primarycolor;
+    @include mixins.flex($wrap: wrap);
+
+    h3 {
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 20%;
+        border-radius: 5px;
+    }
+
+    a {
+        border: solid 4px v.$secondarycolor;
+        @include mixins.flex();
+        width:25%;
+        margin: 2rem;
+        height: 300px;
+        color: white;
+        transition: all 600ms;
+        background-position: center;
+        background-size: cover;
+        
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: solid 4px v.$accentcolor;
+            scale: 1.1;
+        }
+    }
+
+    div {
+        @include mixins.flex($direction: column);
+    }
+}

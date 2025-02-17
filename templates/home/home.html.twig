@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block main %}
+
+    {# MAIN #}
+    <section id="homeMain">
+
+        {# Présentation nouveautés bouteilles #}
+        <div class="nouveautés">
+            <h2>Nouveautés</h2>
+
+            {# Vins #}
+            <div></div>
+        </div>
+    
+        {# Intersection #}
+        <div class="intersection">
+            <img src="{{ asset('images/imageslogotono.png') }}" alt="">
+            <h2>Découvrez les caves d'exception</h2>
+        </div>
+
+        {# Présentation Caves #}
+        <div id="HomeCaves">
+            {% for caves in caves %}
+                <a style="background-image: url({{ asset('images/' ~ caves.imageName) }})" href={{ path('app_vins', {'id': caves.id }) }}>
+                    <div>
+                        <h3>{{caves.nom}}</h3>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+
+    </section>
+
+{% endblock %}

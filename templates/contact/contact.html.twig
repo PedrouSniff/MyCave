@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block main %}
+    {# CONTACT #}
+    <section id="contact">
+        <h2>Contactez-moi</h2>
+        <div class="form">
+        {{ form_start(form) }}
+            {{ form_row(form.email) }}
+            {{ form_row(form.objet) }}
+            {{ form_row(form.message) }}
+            {{ form_row(form.submit) }}
+        {{ form_end(form)}}
+        </div>
+
+        {# Réseaux #}
+        <div class="reseaux">
+            <ul class='social'>
+                <li><a href={{ path('app_contact')}}><i class="fa-brands fa-twitter"></i></a></li>
+                <li><a href={{ path('app_contact')}}><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a href={{ path('app_contact')}}><i class="fa-brands fa-youtube"></i></a></li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}

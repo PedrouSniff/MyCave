@@ -1,0 +1,53 @@
+@use "../abstract/mixins";
+@use "../abstract/variable" as v;
+
+// FOOTER
+
+#footer {
+    background-color: v.$secondarycolor;
+    @include mixins.flex($justify: space-between);
+    padding: 2rem;
+    font-family: "SourceBold";
+    text-align: center;
+
+    .copyright {
+        &:hover {
+            border-bottom: 1px solid white;
+        }
+    }
+
+    .footer-contact {
+        display: flex;
+        flex-direction: column;
+
+        a {
+            &:hover {
+                border-bottom: 1px solid white;
+            }
+        }
+    }
+    
+    a {
+        color: white;
+    }
+
+    img {
+        width: 15rem;
+    }
+
+    .social {
+        @include mixins.flex();
+
+        .fa-instagram {
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
+
+        .fa-brands {
+            font-size: 25px;
+
+            @include mixins.hover();
+        }
+    }
+}
+

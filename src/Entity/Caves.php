@@ -7,7 +7,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Nullable;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
+#[Vich\Uploadable]
 #[ORM\Entity(repositoryClass: CavesRepository::class)]
 class Caves
 {
@@ -22,11 +26,20 @@ class Caves
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?user $user = null;
+    #[ORM\OneToOne()]
+    private ?User $user = null;
+
+    #[Vich\UploadableField(mapping: 'images', fileNameProperty: 'imageName')]
+    private ?File $imageFile = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?string $imageName = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $updatedAt = null;
 
     /**
      * @var Collection<int, CavesVins>
@@ -37,6 +50,7 @@ class Caves
     public function __construct()
     {
         $this->cavesVins = new ArrayCollection();
+        $this->date = new \DateTime();
     }
 
     public function getId(): ?int
@@ -80,12 +94,12 @@ class Caves
         return $this;
     }
 
-    public function getUser(): ?user
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(?user $user): static
+    public function setUser(?User $user): static
     {
         $this->user = $user;
 
@@ -120,5 +134,30 @@ class Caves
         }
 
         return $this;
+    }
+
+    public function setImageFile(?File $imageFile = null): void
+    {
+    $this->imageFile = $imageFile;
+
+        if ($imageFile) {
+            // Si un fichier est chargé, met à jour la date
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageName(?string $imageName): void
+    {
+        $this->imageName = $imageName;
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
     }
 }

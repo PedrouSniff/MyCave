@@ -1,0 +1,57 @@
+@use "../abstract/mixins";
+@use "../abstract/variable" as v;
+@use "../base/font";
+
+#inscr {
+    background-color: v.$bgcolor;
+    @include mixins.flex($direction: column);
+    padding-bottom: 2rem;
+
+    h1 {
+        font-family: "SourceBold";
+        color: black;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        font-size: 30px;
+    }
+
+    .form {
+        width: 30%;
+
+        form {
+            color: white;
+            background-color: v.$primarycolor;  
+            @include mixins.flex($direction: column);
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            padding-left: 1rem;
+            padding-right: 2rem;
+
+            button {
+                background-color: v.$secondarycolor;
+                border: none;
+                color: white;
+                cursor: pointer;
+                padding: 0.5rem;
+                transition: all 400ms;
+    
+                &:hover {
+                    background-color: v.$accentcolor;
+                }
+            }
+
+            label {
+                font-family: "SourceRegular";
+                margin-bottom: 5px;
+            }   
+
+            input,textarea,select {
+                width: 100%;
+                margin-bottom: 10px;
+                padding: 0.5rem;
+            }
+        }
+    }
+}

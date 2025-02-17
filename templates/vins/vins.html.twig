@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vos Vins{% endblock %}
+
+{% block main %}
+
+    {# MAIN #}
+    <section id="Vins">
+
+        {# Titre #} 
+        <div class="titre">
+            <h2>Nos vins</h2>
+            <p>Choisissez parmis notre selection de vins prestigieux !</p>
+            <p>Pour cela cliqué simplement sur un vin et cliqué sur ajouté. Rien de plus simple !</p>
+            <a class="contact" href={{path('app_contact')}}>Vous ne trouvez pas votre bonheur ? Contactez-nous !</a>
+        </div>
+
+        {# Cartes #}
+        <div class="cards">
+            {% for vins in allVins %}
+                <a href="{{ path('app_details', {'id': vins.id }) }}" >
+                    <div>
+                        <img src="{{ asset('images/' ~ vins.imageName) }}" alt="">
+                        <h3>{{vins.nom}}</h3>
+                        <p>{{ vins.date|date("Y") }}</p>
+                        <p>{{vins.description|slice(0, 30) ~ '...'}}</p>
+                        <p>{{vins.region.pays.nom}} / {{vins.region.nom}} </p>
+                    </div>
+                </a>
+
+                {# Boutons supprimer et modifier #}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a class="modifier" href="{{ path('app_vins_modif', {'id': vins.id}) }}">modifier</a>
+                    <form method="POST" onsubmit="return confirm('Confirmer la suppression ?')" action="{{ path('app_vins_supprimer', {'id': vins.id}) }}">
+                        <input type="hidden" name="_method" value="delete"> 
+                        <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ vins.id) }}">
+                        <input id="delete" type="submit" value="Supprimer">     
+                    </form>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        {# Formulaire #}
+        {% if is_granted('ROLE_ADMIN') %}
+            <div class="form">  
+                {{form_start(vinsform)}}
+                    {{form_widget(vinsform)}}
+                    <button>Envoyer</button>
+                {{form_end(vinsform)}}
+            </div>
+        {% endif %}
+    </section>
+{% endblock %}

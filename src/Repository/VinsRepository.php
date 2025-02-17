@@ -16,21 +16,21 @@ class VinsRepository extends ServiceEntityRepository
         parent::__construct($registry, Vins::class);
     }
 
-    //    /**
-    //     * @return Vins[] Returns an array of Vins objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('v')
-    //            ->andWhere('v.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('v.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+       /**
+        * @return Vins[] Returns an array of Vins objects
+        */
 
+        public function findVinsByUser($user)
+        {
+            return $this->createQueryBuilder('v')
+                ->innerJoin('v.cavesVins', 'cv')
+                ->innerJoin('cv.caves', 'c')
+                ->where('c.user = :user')
+                ->setParameter('user', $user)
+                ->getQuery()
+                ->getResult();
+        }
+ 
     //    public function findOneBySomeField($value): ?Vins
     //    {
     //        return $this->createQueryBuilder('v')

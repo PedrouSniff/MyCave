@@ -1,0 +1,87 @@
+@use "../abstract/mixins";
+@use "../abstract/variable" as v;
+@use "../base/font";
+
+#connexion {
+    background-color: v.$bgcolor;
+    text-align: center;
+    @include mixins.flex($direction: column);
+
+    .account {
+        font-family: "SourceRegular";
+        transition: all 400ms;
+
+        &:hover {
+            text-decoration: underline v.$accentcolor;
+        }
+    }
+  
+    h2 {    
+      font-family: "SourceBold";
+      color: black;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      font-size: 30px;
+    }
+  
+    .form {
+      width: 30%;
+  
+      form {
+        color: white;
+        background-color: v.$primarycolor;
+        @include mixins.flex($direction: column);
+        border-radius: 15px;
+        margin-bottom: 2rem;
+        padding: 2rem;
+  
+        .form-group {
+          text-align: left;
+          margin-bottom: 1rem;
+  
+          label {
+            font-family: "SourceRegular";
+            margin-bottom: 5px;
+            display: block;
+          }
+  
+          input {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+          }
+        }
+  
+        button {
+          background-color: v.$secondarycolor;
+          border: none;
+          color: white;
+          cursor: pointer;
+          padding: 0.5rem;
+          transition: all 400ms;
+          border-radius: 5px;
+          margin-top: 1rem;
+  
+          &:hover {
+            background-color: v.$accentcolor;
+          }
+        }
+  
+        .alert {
+          margin-bottom: 1rem;
+          background-color: #dc3545; // couleur d'alerte danger
+          color: white;
+          padding: 0.5rem;
+          border-radius: 5px;
+        }
+  
+        a {
+          margin-top: 1rem;
+          color: white;
+          text-decoration: underline;
+        }
+      }
+    }
+  }

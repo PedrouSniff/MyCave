@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Profil{% endblock %}
+
+{% block main %}
+    <section id="profil">
+        <div>   
+            {# <img src="https://via.placeholder.com/100" alt="Avatar"> #}
+            <h2>{{ user.username }}</h2>
+            <p>{{ user.email }}</p>
+        </div> 
+    </section>
+{% endblock %}
