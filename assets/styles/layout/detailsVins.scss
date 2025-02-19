@@ -1,0 +1,43 @@
+@use "../abstract/mixins";
+@use "../abstract/variable" as v;
+@use "../base/font";
+
+#details {
+    @include mixins.flex();
+    text-align: center;
+    background-color: v.$bgcolor;
+
+    .cards {
+        flex-wrap: wrap;
+        width: 30%;
+        background-color: v.$primarycolor;
+        border-radius: 10px;
+        text-align: center;
+        border: solid v.$secondarycolor 4px;
+        transition: all 600ms;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        color: white;
+
+        p {
+            font-family: "SourceRegular";
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: normal;
+        }
+
+        h3 {
+            font-family: "SourceBold";
+            font-size: 20px;
+        }
+
+        img {
+            width: 100%;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+        }
+    }
+}

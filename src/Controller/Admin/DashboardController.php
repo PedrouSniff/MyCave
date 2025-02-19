@@ -48,7 +48,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Mycave');
+            ->setTitle('<a href="/"> Mycave</a>');
     }
 
     public function configureMenuItems(): iterable
@@ -59,10 +59,5 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Pays', 'fas fa-list', Pays::class);
         yield MenuItem::linkToCrud('Region', 'fas fa-list', Region::class);
         yield MenuItem::linkToCrud('Utilisateur', 'fas fa-list', User::class);
-
-
-
-
-
     }
 }

@@ -4,12 +4,12 @@
 
 {% block main %}
     <section id="details">
-        <div>
+        <div class="cards">
             <img src="{{ asset('images/' ~ vins.imageName) }}" alt="">
             <h3>{{vins.nom}}</h3>
             <p>{{ vins.date|date("Y") }}</p>
-            <p>{{vins.description|slice(0, 30) ~ '...'}}</p>
+            <p>{{vins.description}}</p>
             <p>{{vins.region.pays.nom}} / {{vins.region.nom}} </p>
         </div>
     </section>
-{% endblock %}
+{% endblock %} 

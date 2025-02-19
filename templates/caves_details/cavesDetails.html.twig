@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ caves.nom }}{% endblock %}
+
+{% block main %}
+    <section id="CavesDetails">
+        <div class="titre">
+            <h2>Bienvenue dans la {{ caves.nom }}</h2>
+            <p>{{ caves.description }}</p>
+            <p>Créer le {{ caves.date ? caves.date|date("m/d/Y") : 'Date inconnue' }}</p>
+        </div>
+
+        <div class="CartesVins">
+            {% for caveVin in caves.cavesVins %}
+                <div class="cards">
+                    <a href="{{ path('app_details', {'id': caveVin.vins.id }) }}" >
+                        <div>
+                            <img src="{{ asset('images/' ~ caveVin.vins.imageName) }}" alt="">
+                            <h3>{{ caveVin.vins.nom }}</h3>
+                            <p>{{ caveVin.vins.date|date("Y") }}</p>
+                            <p>{{ caveVin.vins.description|slice(0, 30) ~ '...' }}</p>
+                            <p>{{ caveVin.vins.region.pays.nom }} / {{ caveVin.vins.region.nom }}</p>
+                        </div>
+                    </a>
+                    <form action="{{ path('app_supprimer_vins_caves', {caves: caves.id, vin: caveVin.id}) }}" method="post"
+                        onsubmit="return confirm('Êtes-vous sûr de vouloir retirer cette bouteille ?');">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit">Retirer</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

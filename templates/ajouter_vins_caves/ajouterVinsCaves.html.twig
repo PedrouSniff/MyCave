@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter Cette Bouteille{% endblock %}
+
+{% block main %}
+    <section id="addBottle">
+        <h2>Ajouter Cette Bouteille</h2>
+        <div class="form">  
+                {{form_start(form)}}
+                    {{form_widget(form)}}
+                    <button>Envoyer</button>
+                {{form_end(form)}}
+            </div>
+    </section>
+{% endblock %}

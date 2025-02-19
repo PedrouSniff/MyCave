@@ -15,7 +15,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 final class VinsController extends AbstractController
 {
     #[Route('/vins', name: 'app_vins')]
-    public function addbouteilles(Request $request, EntityManagerInterface $entityManager, VinsRepository $repository): Response
+    public function addbouteilles(Request $request, EntityManagerInterface $entityManager, VinsRepository $repository, UserInterface $user): Response
     {
         // Création d'un nouvel objet Vins
         $vins = new Vins();

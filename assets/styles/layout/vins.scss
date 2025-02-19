@@ -21,7 +21,7 @@
         margin-bottom: 15px;
     }
 
-    .contact {
+    .contact, .ajouter  {
         display: block;
         font-family: "SourceRegular";
         color: black;
@@ -35,7 +35,7 @@
         }
     }
     
-    .form {
+    #form {
         width: 30%;
 
         form {
@@ -56,7 +56,8 @@
                 cursor: pointer;
                 padding: 0.5rem;
                 transition: all 400ms;
-    
+                border-radius: 5px;
+
                 &:hover {
                     background-color: v.$accentcolor;
                 }
@@ -71,7 +72,27 @@
                     display: flex;
                     flex-direction: column;
                     align-items: start;
+                    justify-content: center;
+                 
+                 #vins_raisinsVins {
+                        display: flex;
+                        align-items: center;
+                        flex-direction: row;
+                        justify-content: center;
 
+                        label {
+                            font-size: 14px;
+                            font-family: "SourceRegular";
+                        }
+
+                        input[type="checkbox"] {
+                            width: 18px;
+                            height: 18px;
+                            accent-color: #4e0110;
+                            cursor: pointer;
+                        }
+                    }
+                    
                     label {
                         font-family: "SourceRegular";
                         margin-bottom: 5px;
@@ -81,6 +102,7 @@
                         width: 100%;
                         margin-bottom: 10px;
                         padding: 0.5rem;
+                        border-radius: 5px;
                     }
 
                     textarea {
@@ -89,6 +111,7 @@
                         margin-bottom: 10px;
                         padding: 0.5rem;
                         height: 100px;
+                        border-radius: 5px;
                     }
                     
                     select {
@@ -99,43 +122,101 @@
         }
     }
     
-    .cards {
+    .CartesVins {
         display: flex;
         justify-content: center;
-        flex-direction: column;
         flex-wrap: wrap;
-        width: 20rem;
-        background-color: v.$primarycolor;
-        border-radius: 10px;
-        text-align: center;
-        border: solid v.$secondarycolor 4px;
-        transition: all 600ms;
-        margin-top: 2rem;
+        flex-direction: row; 
 
-        &:hover {
-            border: solid 4px v.$accentcolor;
-            scale: 1.05;
+        .cards {
+            flex-wrap: wrap;
+            width: 20rem;
+            background-color: v.$primarycolor;
+            border-radius: 10px;
+            text-align: center;
+            border: solid v.$secondarycolor 4px;
+            transition: all 600ms;
+            padding-bottom: 1rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            margin-left: 1rem;
+            margin-right: 1rem;
+    
+            &:hover {
+                border: solid 4px v.$accentcolor;
+                scale: 1.05;
+            }
+    
+            a {
+                color: white;
+                font-family: "SourceRegular";
+            }
+    
+            p {
+                font-family: "SourceRegular";
+                margin-top: 10px;
+            }
+    
+            h3 {
+                font-family: "SourceBold";
+                font-size: 20px;
+            }
+    
+            img {
+                width: 100%;
+                border-top-right-radius: 10px;
+                border-top-left-radius: 10px;
+            }
+
+            .add {
+                padding: 10px;
+                font-size: 15px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                background-color: v.$secondarycolor;
+                color: white;
+                text-decoration: none;
+                transition: all 400ms;
+
+                
+                &:hover {
+                    background-color: v.$accentcolor;
+                    transform: scale(1.05);
+                }
+            }
         }
+    }
 
-        a {
+    .btn-container {
+        @include mixins.flex();
+
+        .modifier, #delete {
+            padding: 10px;
+            font-size: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: v.$secondarycolor;
+            margin-bottom: 1rem;
             color: white;
-            font-family: "SourceRegular";
+            text-decoration: none;
+            transition: all 400ms;
+            margin-bottom: 1rem;
+
+            &:hover {
+                background-color: v.$accentcolor;
+                transform: scale(1.05);
+            }
         }
 
-        p {
-            font-family: "SourceRegular";
-            margin-top: 10px;
+        .modifier {
+            width: 25%;
         }
 
-        h3 {
-            font-family: "SourceBold";
-            font-size: 20px;
-        }
-
-        img {
-            width: 100%;
-            border-top-right-radius: 10px;
-            border-top-left-radius: 10px;
+        #delete {
+            margin-right: 1rem;
+            margin-left: 1rem;
         }
     }
 }

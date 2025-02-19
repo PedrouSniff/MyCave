@@ -1,2 +1,58 @@
 @use "../abstract/mixins";
 @use "../abstract/variable";
+
+@media screen and (max-width: 1250px) {
+    #header {
+        nav{
+            padding-left: 0rem;
+            padding-right: 0rem;
+        }
+    }
+}
+
+@media screen and (max-width: 970px) {
+    #header {
+        flex-wrap: wrap;
+        justify-content: center;
+        flex-direction: column;
+        
+        a {
+            margin-bottom: 1rem;
+        }
+        .profil {
+            flex-direction: column;
+
+            li {
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+                a {
+                    margin: 0rem;
+                }
+            }
+        }
+    }
+    #propos p {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 870px) {
+    #footer {
+        flex-direction: column;
+
+        a {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+    }
+
+    #HomeCaves {
+        a {
+            width: 40%;
+        }
+    }
+}
+
+@media screen and (max-width: 870px) {
+
+}

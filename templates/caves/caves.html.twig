@@ -34,7 +34,7 @@
         {# Caves #}
         <div class="cardscontainer">
             {% for caves in allCaves %}
-                <a style="background-image: url({{ asset('images/' ~ caves.imageName) }})" class="cards" href={{ path('app_vins', {'id': caves.id }) }}>
+                <a style="background-image: url({{ asset('images/' ~ caves.imageName) }})" class="cards" href={{ path('app_caves_details', {'id': caves.id }) }}>
                     <div>
                         <h3>{{caves.nom}}</h3>
                         <p>Fondé le {{ caves.date|date("m/d/Y") }}</p>

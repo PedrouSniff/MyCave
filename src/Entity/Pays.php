@@ -60,7 +60,7 @@ class Pays
             $this->regions->add($region);
             $region->setPays($this);
         }
-
+        
         return $this;
     }
 
@@ -74,5 +74,11 @@ class Pays
         }
 
         return $this;
+    }
+
+    // function toString() pour que mon EasyAdmin puisse afficher les noms des elements au lieu de juste une liste 
+    public function __toString(): string
+    {
+        return $this->nom;
     }
 }

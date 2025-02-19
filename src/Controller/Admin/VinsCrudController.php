@@ -22,7 +22,7 @@ class VinsCrudController extends AbstractCrudController
     {
         return [
             TextField::new('nom'),
-            TextEditorField::new('description'),
+            TextField::new('description'),
             DateField::new('date'),
             AssociationField::new('region','region'),
             ImageField::new('imageName')

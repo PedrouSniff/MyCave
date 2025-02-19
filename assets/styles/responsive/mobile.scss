@@ -1,2 +1,35 @@
 @use "../abstract/mixins";
 @use "../abstract/variable";
+
+@media screen and (max-width: 800px) {
+    #caves {
+        .cardscontainer {
+            .cards {
+                width: 90%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 700px) {
+    #HomeCaves {
+        a {
+            width: 50%;
+        }
+    }
+}
+
+@media screen and (max-width: 550px) {
+    #header {
+        nav {
+            ul {
+                display: flex;
+                flex-direction: column;
+
+                li {
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+    }
+}

@@ -12,7 +12,24 @@
             <h2>Nouveautés</h2>
 
             {# Vins #}
-            <div></div>
+            <div class="CartesVins">
+                {% for vins in allVins %}
+                    <div class="cards">
+                        <a href="{{ path('app_details', {'id': vins.id }) }}" >
+                            <div>
+                                <img src="{{ asset('images/' ~ vins.imageName) }}" alt="">
+                                <h3>{{vins.nom}}</h3>
+                                <p>{{ vins.date|date("Y") }}</p>
+                                <p>{{vins.description|slice(0, 30) ~ '...'}}</p>
+                                <p>{{vins.region.pays.nom}} / {{vins.region.nom}} </p>
+                                {# {% for raisinsVin in vins.raisinsVins %}
+                                <p>{{ raisinsVins.raisins.nom }}</p>
+                                {% endfor %} #}
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     
         {# Intersection #}
@@ -24,7 +41,7 @@
         {# Présentation Caves #}
         <div id="HomeCaves">
             {% for caves in caves %}
-                <a style="background-image: url({{ asset('images/' ~ caves.imageName) }})" href={{ path('app_vins', {'id': caves.id }) }}>
+                <a style="background-image: url({{ asset('images/' ~ caves.imageName) }})" href={{ path('app_caves_details', {'id': caves.id }) }}>
                     <div>
                         <h3>{{caves.nom}}</h3>
                     </div>

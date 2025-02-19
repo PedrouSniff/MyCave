@@ -1,0 +1,130 @@
+@use "../abstract/mixins";
+@use "../abstract/variable" as v;
+@use "../base/font";
+
+#CavesDetails {
+    background-color: v.$bgcolor;
+    text-align: center;
+
+    .titre {
+        @include mixins.flex($direction: column);
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+
+        h2 {
+            font-family: "SourceBold";
+            font-size: 30px;
+        }
+
+        p {
+            font-family: "SourceRegular";
+        }
+    }
+
+    .CartesVins {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        flex-direction: row; 
+    
+        .cards {
+            flex-wrap: wrap;
+            width: 20rem;
+            background-color: v.$primarycolor;
+            border-radius: 10px;
+            text-align: center;
+            border: solid v.$secondarycolor 4px;
+            transition: all 600ms;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            margin-left: 1rem;
+            margin-right: 1rem;
+    
+            &:hover {
+                border: solid 4px v.$accentcolor;
+                scale: 1.05;
+            }
+    
+            a {
+                color: white;
+                font-family: "SourceRegular";
+            }
+    
+            p {
+                font-family: "SourceRegular";
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+    
+            h3 {
+                font-family: "SourceBold";
+                font-size: 20px;
+            }
+    
+            img {
+                width: 100%;
+                border-top-right-radius: 10px;
+                border-top-left-radius: 10px;
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+}
+.CartesVins {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row; 
+
+    .cards {
+        flex-wrap: wrap;
+        width: 20rem;
+        background-color: v.$primarycolor;
+        border-radius: 10px;
+        text-align: center;
+        border: solid v.$secondarycolor 4px;
+        transition: all 600ms;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+
+        &:hover {
+            border: solid 4px v.$accentcolor;
+            scale: 1.05;
+        }
+
+        a {
+            color: white;
+            font-family: "SourceRegular";
+        }
+
+        p {
+            font-family: "SourceRegular";
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            font-family: "SourceBold";
+            font-size: 20px;
+        }
+
+        img {
+            width: 100%;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+        }
+    }
+}

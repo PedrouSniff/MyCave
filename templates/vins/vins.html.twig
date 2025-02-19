@@ -10,39 +10,45 @@
         {# Titre #} 
         <div class="titre">
             <h2>Nos vins</h2>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a class="ajouter" href="#form">Ajouter une bouteille</a>
+            {% endif %}
             <p>Choisissez parmis notre selection de vins prestigieux !</p>
             <p>Pour cela cliqué simplement sur un vin et cliqué sur ajouté. Rien de plus simple !</p>
             <a class="contact" href={{path('app_contact')}}>Vous ne trouvez pas votre bonheur ? Contactez-nous !</a>
         </div>
 
         {# Cartes #}
-        <div class="cards">
+        <div class="CartesVins">
             {% for vins in allVins %}
-                <a href="{{ path('app_details', {'id': vins.id }) }}" >
-                    <div>
-                        <img src="{{ asset('images/' ~ vins.imageName) }}" alt="">
-                        <h3>{{vins.nom}}</h3>
-                        <p>{{ vins.date|date("Y") }}</p>
-                        <p>{{vins.description|slice(0, 30) ~ '...'}}</p>
-                        <p>{{vins.region.pays.nom}} / {{vins.region.nom}} </p>
-                    </div>
-                </a>
+                <div class="cards">
+                    <a href="{{ path('app_details', {'id': vins.id }) }}" >
+                            <img src="{{ asset('images/' ~ vins.imageName) }}" alt="">
+                            <h3>{{vins.nom}}</h3>
+                            <p>{{ vins.date|date("Y") }}</p>
+                            <p>{{vins.description|slice(0, 30) ~ '...'}}</p>
+                            <p>{{vins.region.pays.nom}} / {{vins.region.nom}}</p>
+                    </a>
 
-                {# Boutons supprimer et modifier #}
-                {% if is_granted('ROLE_ADMIN') %}
-                    <a class="modifier" href="{{ path('app_vins_modif', {'id': vins.id}) }}">modifier</a>
-                    <form method="POST" onsubmit="return confirm('Confirmer la suppression ?')" action="{{ path('app_vins_supprimer', {'id': vins.id}) }}">
-                        <input type="hidden" name="_method" value="delete"> 
-                        <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ vins.id) }}">
-                        <input id="delete" type="submit" value="Supprimer">     
-                    </form>
-                {% endif %}
+                    {# Boutons supprimer et modifier #}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <div class="btn-container">
+                            <a class="modifier" href="{{ path('app_vins_modif', {'id': vins.id}) }}">Modifier</a>
+                            <form method="POST" onsubmit="return confirm('Confirmer la suppression ?')" action="{{ path('app_vins_supprimer', {'id': vins.id}) }}">
+                                <input type="hidden" name="_method" value="delete"> 
+                                <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ vins.id) }}">
+                                <input id="delete" type="submit" value="Supprimer">     
+                            </form>
+                        </div>
+                        {% endif %}
+                    <a class="add" href="{{path ('app_ajouter_vins_caves', {'id': vins.id})}}">Ajouter</a>
+                </div>
             {% endfor %}
         </div>
 
         {# Formulaire #}
         {% if is_granted('ROLE_ADMIN') %}
-            <div class="form">  
+            <div id="form">  
                 {{form_start(vinsform)}}
                     {{form_widget(vinsform)}}
                     <button>Envoyer</button>

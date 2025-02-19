@@ -2,6 +2,8 @@
 
 namespace App\Form;
 
+use App\Entity\Raisins;
+use App\Entity\RaisinsVins;
 use App\Entity\Vins;
 use App\Entity\Region;
 use Symfony\Component\Form\AbstractType;
@@ -39,8 +41,14 @@ class VinsType extends AbstractType
                         'mimeTypesMessage' => 'Veuillez uploader une image valide (JPEG, PNG, GIF).',
                     ])
                 ],
-            ])
-        ;
+            ]);
+            // ->add('raisinsVins', EntityType::class, [
+            //     'class' => Raisins::class,
+            //     'choice_label' => 'nom',
+            //     'label' => 'Type de raisins',
+            //     'multiple' => true,
+            //     'expanded' => true,
+            // ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

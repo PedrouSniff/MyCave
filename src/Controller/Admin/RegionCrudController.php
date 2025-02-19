@@ -20,7 +20,11 @@ class RegionCrudController extends AbstractCrudController
     {
         return [
             TextField::new('nom'),
-            AssociationField::new('pays','pays'),
+            AssociationField::new('pays','pays')
+                    ->setFormTypeOptions([
+                        'choice_label' => 'nom',
+                        // 'label' => 'Pays',
+                    ]),
         ];
     }
 }
